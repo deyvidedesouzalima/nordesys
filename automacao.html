@@ -3,143 +3,502 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nordesys - Software e Soluções em Automação Industrial</title>
-    <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Workshop Programação iFIX - Nordesys</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #003d99 0%, #0052cc 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo-nordesys {
+            color: #ff9500;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff9500;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #003d99 0%, #0052cc 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: #ff9500;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .details-section {
+            background: white;
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .detail-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #ff9500;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-card h3 {
+            color: #003d99;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .detail-card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .detail-card p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .about-section {
+            background: white;
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .about-section h2 {
+            color: #003d99;
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #003d99;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .about-text ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .about-text li {
+            color: #666;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .about-text li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff9500;
+            font-weight: bold;
+        }
+
+        .form-section {
+            background: white;
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-section h2 {
+            color: #003d99;
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-placeholder {
+            background: #f0f4ff;
+            border: 2px dashed #003d99;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            color: #003d99;
+        }
+
+        .form-placeholder p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .form-placeholder code {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 600px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #003d99 0%, #0052cc 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 10px;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background-color: #ff9500;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #e68900;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #003d99;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: #ff9500;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .highlight {
+            color: #ff9500;
+            font-weight: bold;
+        }
+
+        .badge-info {
+            display: inline-block;
+            background: #e8f4ff;
+            color: #003d99;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header/Navigation -->
-    <header class="header">
-        <div class="container header-content">
-            <div class="logo-section">
-                <img src="LOGO.png" alt="Nordesys Logo" class="logo">
-                <h2 class="Logo_tex">NORDESYS</h2>
-                <h5 class="Logo_tex2">Softwares e Soluções</h5>
-            </div>
-            <nav class="nav">
-                <a href="index.html#servicos" class="nav-link">Serviços</a>
-                <a href="index.html#cases" class="nav-link">Cases</a>
-                <a href="index.html#sobre" class="nav-link">Sobre</a>
-                <a href="contato.html#contato" class="nav-link" target="_blank" >Contato</a>
-                <a href="treinamentos.html#contato" class="nav-link" target="_blank">Treinamentos</a>
-                <button class="btn btn-accent" onclick= "abrirWhatsApp()">Solicitar Visita Técnica</button>
+    <header>
+        <div class="header-container">
+            <div class="logo"><span class="logo-nordesys">NORDESYS</span> Workshop</div>
+            <nav>
+                <a href="#sobre">Sobre</a>
+                <a href="#detalhes">Detalhes</a>
+                <a href="#inscricao">Inscrição</a>
+                <a href="#contato">Contato</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content animate-slide-in-left">
-                    <h1 class="hero-title">Automação Inteligente</h1>
-                    <p class="hero-description">
-                        A Nordesys é uma empresa especializada em soluções de automação industrial e software, com foco em transformar processos para maximizar resultados.
-                        Serviços disponíveis:
-                         <div class="sobre-lista">
-                        <div class="sobre-item">
-                            <div class="sobre-bullet"></div>
-                            <p>Sistemas de Automação Industrial</p>
-                        </div>
-                        <div class="sobre-item">
-                            <div class="sobre-bullet"></div>
-                            <p>Força e Controle</p>
-                        </div>
-                        <div class="sobre-item">
-                            <div class="sobre-bullet"></div>
-                            <p>Dashboards e Análise de Dados</p>
-                        </div>
-                        <div class="sobre-item">
-                            <div class="sobre-bullet"></div>
-                            <p>Desenvolvimento de aplicações personalizadas</p>
-                        </div>
-                        <div class="sobre-item">
-                            <div class="sobre-bullet"></div>
-                            <p>Soluções em IOT</p>
-                        </div>
-                        <div class="sobre-item">
-                            <div class="sobre-bullet"></div>
-                            <p>Gestão Industrial</p>
-                        </div>
-                    </div>
-                    </p>
-                    <P>
-                    </P>
-                    <p class="hero-description">
-                        A Nordesys une tecnologia de ponta a um propósito claro: fomentar o 
-                        crescimento do Norte de Minas. Como agentes da inovação regional, 
-                        nossa dedicação à qualidade é o que sustenta o avanço social e econômico 
-                        que entregamos. Na Nordesys, a excelência não é apenas um objetivo, é a 
-                        base de tudo o que construímos.
-                    </p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-accent" onclick= "abrirWhatsApp()" >Começar Agora →</button>
-                        <button class="btn btn-outline" href="index.html">Saiba Mais</button>
-                    </div>
-                </div>
-                <div class="hero-image animate-slide-in-right">
-                    <div class="slider-container">
-                        <div class="slider">
-                            <img src="https://assets.blog.siemens.com/uploads/2025/04/simatic-wincc-v8-visual-landscape_small.jpeg" alt="Foto 1">
-                            <img src="https://yuvandoo.com/images/img-160425020.jpg" alt="Foto 2">
-                            <img src="https://www.fourcompany.com.br/public/img/blocos/Instrumenta%C3%A7%C3%A3o_Sf0X8UiRQIStfsaTjWTmYoyc9.webp" alt="Foto 3">
-                            <img src="https://polocentralcursos.com.br/wp-content/uploads/2022/03/manutencao-industrial-tipos-manutencao-industrial-768x521-1.jpg" alt="Foto 4">
-                        </div>
-                    </div>
-                </div>
+        <div class="hero-content">
+            <div class="hero-badge">Workshop Técnico - Programação iFIX</div>
+            <h1>Domine a Programação em iFIX</h1>
+            <p class="hero-subtitle">Aprenda as melhores práticas e técnicas avançadas de programação no software de supervisão e controle industrial mais utilizado no mercado</p>
+            <div style="margin-top: 30px;">
+                <span class="badge-info">📅 Sexta, 17 de Abril de 2026</span>
+                <span class="badge-info">🕖 19:00 - 20:30 (1,5h)</span>
+                <span class="badge-info">💻 Online</span>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Pronto para Transformar Sua Indústria?</h2>
-                <p class="cta-description">
-                    Entre em contato conosco e descubra como nossas soluções podem otimizar seus processos
-                </p>
-                <button class="btn btn-accent" onclick= "abrirWhatsApp()" >Solicitar Orçamento</button>
-            </div>
-        </div>
-    </section>
+    <div class="container">
+        <section class="details-section" id="detalhes">
+            <h2 style="color: #003d99; font-size: 36px; text-align: center; margin-bottom: 10px;">O que você vai aprender</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 40px; font-size: 16px;">Conteúdo prático e direto ao ponto para profissionais de automação industrial</p>
+            
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="icon">⚙️</div>
+                    <h3>Fundamentos do iFIX</h3>
+                    <p>Compreenda a arquitetura, componentes principais e fluxo de dados no iFIX. Configuração inicial e best practices.</p>
+                </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <img src="LOGO.png" alt="Nordesys Logo" class="footer-logo">
-                    <p class="footer-text">Soluções em automação industrial e software</p>
+                <div class="detail-card">
+                    <div class="icon">🔧</div>
+                    <h3>Programação de Telas</h3>
+                    <p>Desenvolvimento de interfaces HMI profissionais, layouts responsivos, animações e integração com dados em tempo real.</p>
                 </div>
-                <div class="footer-col">
-                    <h4 class="footer-title">Serviços</h4>
-                    <ul class="footer-list">
-                        <li><a href="index.html#" class="footer-link">Automação Industrial</a></li>
-                        <li><a href="index.html#" class="footer-link">Software</a></li>
-                        <li><a href="index.html#" class="footer-link">Eletromecânica</a></li>
-                    </ul>
+
+                <div class="detail-card">
+                    <div class="icon">📊</div>
+                    <h3>Manipulação de Dados</h3>
+                    <p>Técnicas avançadas de tratamento de dados, alarmes, históricos e relatórios. Integração com bancos de dados.</p>
                 </div>
-                <div class="footer-col">
-                    <h4 class="footer-title">Empresa</h4>
-                    <ul class="footer-list">
-                        <li><a href="index.html#" class="footer-link">Sobre</a></li>
-                        <li><a href="index.html#" class="footer-link">Cases</a></li>
-                        <li><a href="index.html#" class="footer-link">Contato</a></li>
-                    </ul>
+
+                <div class="detail-card">
+                    <div class="icon">🔌</div>
+                    <h3>Comunicação Industrial</h3>
+                    <p>Protocolos Ethernet/IP, Profibus, Profinet e Modbus. Configuração de drivers e conexão com PLCs.</p>
                 </div>
-                <div class="footer-col">
-                    <h4 class="footer-title">Contato</h4>
-                    <p class="footer-text">Montes Claros, MG<br>Brasil</p>
-                    <p class="footer-text">CNPJ: 57.491.365/0001-83</p>
+
+                <div class="detail-card">
+                    <div class="icon">🚀</div>
+                    <h3>Otimização e Performance</h3>
+                    <p>Dicas para otimizar aplicações, reduzir latência e garantir confiabilidade em ambientes críticos.</p>
+                </div>
+
+                <div class="detail-card">
+                    <div class="icon">💡</div>
+                    <h3>Casos Práticos</h3>
+                    <p>Exemplos reais de implementação em indústrias farmacêutica, cimenteira e de utilidades industriais.</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Nordesys. Todos os direitos reservados.</p>
+        </section>
+
+        <section class="about-section" id="sobre">
+            <h2>Por que participar?</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Instrutor Especializado</h3>
+                    <p>Profissional com mais de 15 anos de experiência em automação industrial, com certificações Siemens e expertise em sistemas SCADA de ponta.</p>
+                    
+                    <h3 style="margin-top: 30px;">Conteúdo Prático</h3>
+                    <p>Workshop 100% focado em aplicações reais, com exemplos de projetos implementados em grandes indústrias.</p>
+
+                    <h3 style="margin-top: 30px;">Certificado de Participação</h3>
+                    <p>Receba certificado de conclusão do workshop para seu portfólio profissional.</p>
+
+                    <ul style="margin-top: 30px;">
+                        <li>Acesso a materiais de referência</li>
+                        <li>Suporte pós-workshop</li>
+                        <li>Networking com profissionais da área</li>
+                        <li>Dúvidas respondidas em tempo real</li>
+                    </ul>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #003d99 0%, #0052cc 100%); border-radius: 10px; padding: 40px; color: white; text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 15px;">✓</div>
+                    <h3 style="color: white; margin-bottom: 20px;">Vagas Limitadas</h3>
+                    <p style="margin-bottom: 20px;">Inscrições abertas até 16 de Abril</p>
+                    <p style="font-size: 14px; opacity: 0.9;">Máximo de 50 participantes para garantir qualidade e interação</p>
+                    <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.3);">
+                        <p style="font-size: 12px; opacity: 0.8; margin-bottom: 10px;">Realizado por</p>
+                        <p style="font-size: 20px; font-weight: bold;">NORDESYS</p>
+                        <p style="font-size: 12px; opacity: 0.8; margin-top: 10px;">Soluções em Automação Industrial</p>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <section class="form-section" id="inscricao">
+            <h2>Faça sua Inscrição</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 16px;">Preencha o formulário abaixo para garantir seu lugar no workshop</p>
+            
+            <div class="form-container">
+                <div class="form-placeholder">
+                    <p><strong>Formulário de Inscrição</strong></p>
+                    <p style="font-size: 14px; color: #666;">O formulário do Google será inserido aqui</p>
+                    <code>&lt;iframe src="LINK_DO_GOOGLE_FORMS"&gt;&lt;/iframe&gt;</code>
+                    <p style="margin-top: 20px; font-size: 13px; color: #666;">
+                        <strong>Instruções:</strong> Substitua o atributo <code>src</code> pelo link de embed do seu Google Forms
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Pronto para aprender?</h2>
+            <p>Inscreva-se agora e garanta seu lugar no workshop</p>
+            <a href="#inscricao" class="cta-button">Ir para Inscrição</a>
+        </section>
+    </div>
+
+    <footer id="contato">
+        <p><strong>Workshop Programação iFIX - Nordesys</strong></p>
+        <p>📅 Sexta, 17 de Abril de 2026 | 🕖 19:00 - 20:30 | 💻 Online</p>
+        
+        <div class="footer-links">
+            <a href="https://nordesys.com.br" target="_blank">Site Nordesys</a>
+            <a href="https://linkedin.com/company/nordesys" target="_blank">LinkedIn</a>
+            <a href="mailto:contato@nordesys.com.br">Email</a>
         </div>
+
+        <p style="margin-top: 20px; font-size: 12px; opacity: 0.8;">© 2026 Nordesys - Soluções em Automação Industrial. Todos os direitos reservados.</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
