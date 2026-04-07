@@ -361,14 +361,22 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo"><span class="logo-nordesys">NORDESYS</span> Workshop</div>
-            <nav>
-                <a href="#sobre">Sobre</a>
-                <a href="#detalhes">Detalhes</a>
-                <a href="#inscricao">Inscrição</a>
-                <a href="#contato">Contato</a>
+ <!-- Header/Navigation -->
+    <header class="header">
+        <link rel="icon" href="LOGO.png">
+        <div class="container header-content">
+            <div class="logo-section">
+                <img src="LOGO.png" alt="Nordesys Logo" class="logo">
+                <h2 class="Logo_tex">NORDESYS</h2>
+                <h5 class="Logo_tex2">Softwares e Soluções</h5>
+            </div>
+            <nav class="nav">
+                <a href="index.html#servicos" class="nav-link">Serviços</a>
+                <a href="index.html#cases" class="nav-link">Cases</a>
+                <a href="index.html#sobre" class="nav-link">Sobre</a>
+                 <a href="automacao.html" class="nav-link">WorkShops</a>
+                <a href="treinamento.html" class="nav-link">Treinamentos</a>
+                <button class="btn btn-accent" onclick= "abrirWhatsApp()">Solicitar Visita Técnica</button>
             </nav>
         </div>
     </header>
@@ -467,16 +475,12 @@
 
         <section class="form-section" id="inscricao">
             <h2>Faça sua Inscrição</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 16px;">Preencha o formulário abaixo para garantir seu lugar no workshop</p>
+            <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 16px;">Clique no formulário abaixo para garantir seu lugar no workshop</p>
             
             <div class="form-container">
                 <div class="form-placeholder">
                     <p><strong>Formulário de Inscrição</strong></p>
-                    <p style="font-size: 14px; color: #666;">O formulário do Google será inserido aqui</p>
-                    <code>&lt;iframe src="LINK_DO_GOOGLE_FORMS"&gt;&lt;/iframe&gt;</code>
-                    <p style="margin-top: 20px; font-size: 13px; color: #666;">
-                        <strong>Instruções:</strong> Substitua o atributo <code>src</code> pelo link de embed do seu Google Forms
-                    </p>
+                        <a href="https://forms.gle/te7STDKW4qGPtStk7" class="button">INSCRIÇÕES AQUI</a>
                 </div>
             </div>
         </section>
@@ -494,7 +498,7 @@
         
         <div class="footer-links">
             <a href="https://nordesys.com.br" target="_blank">Site Nordesys</a>
-            <a href="https://linkedin.com/company/nordesys" target="_blank">LinkedIn</a>
+            <a href="https://linkedin.com/company/nordesyss" target="_blank">LinkedIn</a>
             <a href="mailto:contato@nordesys.com.br">Email</a>
         </div>
 
