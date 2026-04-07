@@ -37,26 +37,26 @@
     width: auto;
 }
 
-.nav {
+.navh {
     display: none;
     align-items: center;
     gap: 2rem;
 }
 
 @media (min-width: 768px) {
-    .nav {
+    .navh {
         display: flex;
     }
 }
 
-.nav-link {
+.navh-link {
     color: var(--secondary);
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
 }
 
-.nav-link:hover {
+.navh-link:hover {
     color: var(--primary);
 } 
         
@@ -402,14 +402,14 @@
                 <h2 class="Logo_tex">NORDESYS</h2>
                 <h5 class="Logo_tex2">Softwares e Soluções</h5>
             </div>
-            <nav class="nav">
+            <navh class="navh">
                 <a href="index.html#servicos" class="nav-link">Serviços</a>
                 <a href="index.html#cases" class="nav-link">Cases</a>
                 <a href="index.html#sobre" class="nav-link">Sobre</a>
                  <a href="automacao.html" class="nav-link">WorkShops</a>
                 <a href="treinamento.html" class="nav-link">Treinamentos</a>
                 <button class="btn btn-accent" onclick= "abrirWhatsApp()">Solicitar Visita Técnica</button>
-            </nav>
+            </navh>
         </div>
     </header>
 
